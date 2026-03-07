@@ -18,12 +18,6 @@ public class AutorModel {
     @Column(name = "nm_autor", nullable = false, length = 50)
     private String nome;
 
-    @Column(name = "dt_cadastro", nullable = false)
-    private LocalDateTime dataCadastro;
-
-    @Column(name = "sn_ativo", nullable = false, length = 1)
-    private String ativo;
-
     public Integer getId() {
         return id;
     }
@@ -40,20 +34,5 @@ public class AutorModel {
         this.nome = nome;
     }
 
-    public LocalDateTime getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(LocalDateTime dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
-    public String getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(String ativo) {
-        this.ativo = ativo;
-    }
 }
 

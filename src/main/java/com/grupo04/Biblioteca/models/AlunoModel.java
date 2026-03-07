@@ -31,10 +31,4 @@ public class AlunoModel {
     @Column (name = "ds_email")
     private String ds_email;
 
-    @Column (name = "dt_cadastro")
-    private LocalDateTime dt_cadastro;
-
-    @Column (name = "sn_ativo")
-    private char sn_ativo;
-
 }

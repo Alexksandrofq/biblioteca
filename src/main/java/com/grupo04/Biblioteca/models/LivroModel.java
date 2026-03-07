@@ -40,10 +40,4 @@ public class LivroModel {
 
     @Column(name = "sn_locado")
     private char sn_locado;
-
-    @Column(name = "dt_cadastro")
-    private Timestamp dt_cadastro;
-
-    @Column(name = "sn_ativo")
-    private char sn_ativo;
 }

@@ -27,10 +27,4 @@ public class ProfessorModel {
     @Column(name = "nm_professor")
     private String nmProfessor;
 
-    @Column(name = "dt_cadastro", insertable = false, updatable = false)
-    private LocalDateTime dtCadastro;
-
-    @Column(name = "sn_ativo")
-    private char snAtivo;
-
 }
