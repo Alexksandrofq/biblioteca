@@ -37,7 +37,7 @@ public class BibliotecarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable String id) {
+    public ResponseEntity<?> findById(@PathVariable Long id) {
         try {
             BibliotecarioModel bibliotecario = repository.findById(id).orElseThrow(() -> {
                 throw new InvalidParameterException("Bibliotecario inexistente!");
@@ -83,7 +83,7 @@ public class BibliotecarioController {
     }
 
     @PatchMapping("/{id}/{atributo}/{novo}")
-    public ResponseEntity patch(@PathVariable String id, @PathVariable String atributo, @PathVariable String novo) {
+    public ResponseEntity patch(@PathVariable Long id, @PathVariable String atributo, @PathVariable String novo) {
 
         BibliotecarioModel bibliotecario;
         try {
@@ -121,7 +121,7 @@ public class BibliotecarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
             repository.deleteById(id);
             return ResponseEntity.ok().build();

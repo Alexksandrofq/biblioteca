@@ -1,6 +1,7 @@
 package com.grupo04.Biblioteca.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,12 +22,13 @@ public class BibliotecarioModel {
             allocationSize = 1
     )
     @Column(name = "cd_bibliotecario")
-    private String cdBibliotecario;
+    private Long cdBibliotecario;
 
     @Column(name = "nm_bibliotecario")
     private String nmBibliotecario;
 
     @Column(name = "cd_senha")
+    @NotNull
     private String cdSenha;
 
     @Column(name = "dt_nascimento")
@@ -35,6 +37,7 @@ public class BibliotecarioModel {
     @Column(name = "tp_sexo")
     private char tpSexo;
 
-    @Column(name = "ds_email")
+    @NotNull
+    @Column(name = "ds_email", unique = true)
     private String dsEmail;
 }

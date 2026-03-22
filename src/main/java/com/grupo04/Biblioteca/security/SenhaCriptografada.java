@@ -1,9 +1,12 @@
 package com.grupo04.Biblioteca.security;
 
+import org.springframework.context.annotation.Bean;
+
 import java.security.MessageDigest;
 
 public class SenhaCriptografada {
 
+    @Bean
     public static String hash(String senha) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
