@@ -3,6 +3,7 @@ package com.grupo04.Biblioteca.controllers;
 import com.grupo04.Biblioteca.dto.BibliotecarioDTO;
 import com.grupo04.Biblioteca.models.BibliotecarioModel;
 import com.grupo04.Biblioteca.repository.BibliotecarioRepository;
+import com.grupo04.Biblioteca.security.SenhaCriptografada;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jdk.jfr.Name;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,7 @@ public class BibliotecarioController {
     @PostMapping
     public ResponseEntity save(@RequestBody BibliotecarioModel novoBiblitoecario) {
         try {
+            novoBiblitoecario.setCdSenha(SenhaCriptografada.hash(novoBiblitoecario.getCdSenha()));
             repository.save(novoBiblitoecario);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (Exception e) {
@@ -69,7 +71,7 @@ public class BibliotecarioController {
             });
 
             bibliotecarioAtual.setNmBibliotecario(bibliotecario.getNmBibliotecario());
-            bibliotecarioAtual.setCdSenha(bibliotecario.getCdSenha());
+            bibliotecarioAtual.setCdSenha(SenhaCriptografada.hash(bibliotecario.getCdSenha()));
             bibliotecarioAtual.setTpSexo(bibliotecario.getTpSexo());
             bibliotecarioAtual.setDtNascimento(bibliotecario.getDtNascimento());
             repository.save(bibliotecarioAtual);
@@ -98,7 +100,7 @@ public class BibliotecarioController {
                     bibliotecario.setNmBibliotecario(novo);
                     break;
                 case "senha":
-                    bibliotecario.setCdSenha(novo);
+                    bibliotecario.setCdSenha(SenhaCriptografada.hash(novo));
                     break;
                 case "sexo":
                     bibliotecario.setTpSexo(novo.charAt(0));
